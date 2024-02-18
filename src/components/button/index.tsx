@@ -1,6 +1,7 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentProps, forwardRef } from 'react'
 import { cn } from '../../utils'
+import Loading from '../loader'
 const buttonStyles = cva(
     ['w-full', 'rounded-md', 'font-semibold', 'focus:outline-none', 'disabled:cursor-not-allowed'],
     {
@@ -20,6 +21,9 @@ const buttonStyles = cva(
                 danger: 'text-white',
                 success: 'success',
                 secondary: 'secondary'
+            },
+            isLoading: {
+                true: 'cursor-not-allowed'
             }
         },
         compoundVariants: [
@@ -95,9 +99,10 @@ const buttonStyles = cva(
 type ButtonProps = ComponentProps<'button'> & VariantProps<typeof buttonStyles>
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ variant, size, colorscheme, className, ...props }, ref) => {
+    ({ variant, size, colorscheme, className, isLoading, type, ...props }, ref) => {
         return (
             <button
+                type={type}
                 ref={ref}
                 className={cn(
                     buttonStyles({
@@ -105,10 +110,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         size,
                         colorscheme,
                         className
-                    })
+                    }),
+                    (type = type),
+                    // Add a conditional class for loading state
+                    isLoading === true && buttonStyles({ variant, size, colorscheme, className, isLoading: true })
                 )}
-                {...props}
-            />
+
+                // {...props}
+            >
+                {/* Conditionally render loader if isLoading is true */}
+                {isLoading === true && <Loading />}
+                {isLoading !== true && props.children}
+            </button>
         )
     }
 )

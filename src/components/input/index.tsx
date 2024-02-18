@@ -1,4 +1,5 @@
 import { cva, VariantProps } from 'class-variance-authority'
+import { Field, useFormikContext } from 'formik'
 import { ComponentProps, forwardRef } from 'react'
 import { cn } from '../../utils'
 
@@ -19,6 +20,24 @@ const inputStyles = cva([
 
 type InputProps = ComponentProps<'input'> & VariantProps<typeof inputStyles>
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...props }, ref) => {
-    return <input ref={ref} type="text" autoComplete="off" className={cn(inputStyles({ className }))} {...props} />
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ name, className, ...props }, ref) => {
+    const formik = useFormikContext()
+
+    return (
+        <Field name={name}>
+            {({ field, meta }: any) => (
+                <>
+                    <input
+                        {...field}
+                        ref={ref}
+                        type="text"
+                        autoComplete="off"
+                        className={cn(inputStyles({ className }))}
+                        {...props}
+                    />
+                    {meta.touched && meta.error && <div className="text-red-500">{meta.error}</div>}
+                </>
+            )}
+        </Field>
+    )
 })

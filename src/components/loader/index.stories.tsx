@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { LoginForm } from './Login'
+import Loading from './index'
 
-const meta: Meta<typeof LoginForm> = {
-    title: 'Forms/Login',
-    component: LoginForm,
+const meta: Meta<typeof Loading> = {
+    title: 'Components/Loading',
+    component: Loading,
     parameters: {
         // layout: 'centered'
     },
@@ -14,4 +14,4 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Login: Story = {}
+export const Loader: Story = {}
