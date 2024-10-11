@@ -1,37 +1,78 @@
-import React from 'react'
-import { RiAccountBoxFill, RiDashboardFill } from 'react-icons/ri'
+import { RiAccountBoxFill, RiDashboardFill, RiLogoutBoxLine } from 'react-icons/ri'
 
 const SideBarData = [
     {
         icon: <RiDashboardFill />,
         name: 'Dashboard',
-        navigate: '/dashboard'
+        navigate: '/dashboard',
+        allowedRoles: []
     },
     {
         icon: <RiAccountBoxFill />,
         name: 'Accounts',
-        navigate: '/accounts'
+        navigate: '/accounts',
+        allowedRoles: []
     },
     {
         icon: <RiDashboardFill />,
-        name: 'Dashboard',
-        navigate: '/dashboard'
+        name: 'Users',
+        navigate: '/dashboard',
+        allowedRoles: []
     },
     {
         icon: <RiAccountBoxFill />,
-        name: 'Accounts',
-        navigate: '/accounts'
+        name: 'Meters',
+        navigate: '/accounts',
+        allowedRoles: []
     },
     {
         icon: <RiDashboardFill />,
-        name: 'Dashboard',
-        navigate: '/dashboard'
+        name: 'Oil Management',
+        navigate: '/dashboard',
+        allowedRoles: []
     },
     {
-        icon: <RiAccountBoxFill />,
-        name: 'Accounts',
-        navigate: '/accounts'
+        icon: <RiDashboardFill />,
+        name: 'Oil Management',
+        navigate: '/dashboard',
+        allowedRoles: []
+    },
+    {
+        icon: <RiDashboardFill />,
+        name: 'Oil Management',
+        navigate: '/dashboard',
+        allowedRoles: []
+    },
+    {
+        icon: <RiDashboardFill />,
+        name: 'Oil Management',
+        navigate: '/dashboard',
+        allowedRoles: []
+    },
+    {
+        icon: <RiDashboardFill />,
+        name: 'Oil Management',
+        navigate: '/dashboard',
+        allowedRoles: []
+    },
+    {
+        icon: <RiDashboardFill />,
+        name: 'Oil Management',
+        navigate: '/dashboard',
+        allowedRoles: []
+    },
+    {
+        icon: <RiDashboardFill />,
+        name: 'Oil Management',
+        navigate: '/dashboard',
+        allowedRoles: []
+    },
+    {
+        icon: <RiLogoutBoxLine />,
+        name: 'Logout',
+        navigate: '/accounts',
+        allowedRoles: []
     }
 ]
 
-export default SideBarData;
+export default SideBarData

@@ -1,6 +1,6 @@
 import { cva, VariantProps } from 'class-variance-authority'
 import { ComponentProps, forwardRef } from 'react'
-import { cn } from '../../utils'
+import { cn } from '../../../utils'
 import Loading from '../loader'
 const buttonStyles = cva(
     ['w-full', 'rounded-md', 'font-semibold', 'focus:outline-none', 'disabled:cursor-not-allowed'],
@@ -111,7 +111,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                         colorscheme,
                         className
                     }),
-                    (type = type),
                     // Add a conditional class for loading state
                     isLoading === true && buttonStyles({ variant, size, colorscheme, className, isLoading: true })
                 )}

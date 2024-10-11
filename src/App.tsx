@@ -1,11 +1,10 @@
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import store from './app/store'
+import AppContent from './components/shared/AppContent'
 import Layout from './components/shared/Layout'
 import Login from './pages/login/login.page'
-import Dashboard from './views/Dashboard'
-import Product from './views/Product'
+import { store } from './redux-store/store'
 
 const App = () => {
     return (
@@ -14,8 +13,7 @@ const App = () => {
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/" element={<Layout />}>
-                        <Route path="/home" element={<Dashboard />} />
-                        <Route path="/product" element={<Product />} />
+                        <Route path="/*" element={<AppContent />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import useApiCall from '../../api/axios'
+import { useNavigate } from 'react-router-dom'
 import { LoginForm } from '../../components/forms/login/Login'
+import useFetch_POST from '../../services/http/Post'
 
 const Login = () => {
-    const [values, setValues] = useState(null)
-    const { data, error, isLoading } = useApiCall('auth/login', 'post', values)
-
+    const { isLoading, error, data, postData } = useFetch_POST()
+    const navigate = useNavigate()
     const onSubmit = (values: any) => {
-        setValues(values)
+        postData('/auth/v1/login', values)
     }
-
+    if (data) {
+        localStorage.setItem('token', data)
+        navigate('/')
+    }
     return <LoginForm onSubmit={onSubmit} data={data} error={error} isLoading={isLoading} />
 }
 

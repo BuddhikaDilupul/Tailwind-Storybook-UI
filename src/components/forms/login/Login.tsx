@@ -1,9 +1,9 @@
 import { Form, Formik } from 'formik'
-import * as Yup from 'yup'
-import { Button } from '../../button'
-import { Input } from '../../input'
+import { loginValidationSchema } from '../../../validation/login.schema'
+import { Button } from '../../atoms/button'
+import { Input } from '../../atoms/input'
+import { Text } from '../../atoms/text'
 import { Box, Stack } from '../../layout'
-import { Text } from '../../text'
 
 interface LoginFormProps {
     onSubmit: (values: any) => void
@@ -13,17 +13,14 @@ interface LoginFormProps {
 }
 
 export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, data, error, isLoading }) => {
-    const validationSchema = Yup.object({
-        email: Yup.string().email('Invalid email address').required('Email is required'),
-        password: Yup.string().required('Password is required')
-    })
+    const validationSchema = loginValidationSchema
     const handleSubmit = (values: any) => {
         onSubmit(values)
     }
     return (
         <Formik
             initialValues={{
-                email: '',
+                username: '',
                 password: ''
             }}
             validationSchema={validationSchema}
@@ -42,7 +39,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, data, error, isL
                             <Text as="label" htmlFor="username" size={'sm'} weight={'medium'} className="mb-1.5">
                                 Username
                             </Text>
-                            <Input name="email" type="text" id="username" placeholder="Username" className="mb-4" />
+                            <Input name="username" type="text" id="username" placeholder="Username" className="mb-4" />
 
                             <Text as="label" htmlFor="password" size={'sm'} weight={'medium'} className="mb-1.5">
                                 Password

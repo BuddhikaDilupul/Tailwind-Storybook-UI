@@ -1,4 +1,4 @@
-export * from './button'
-export * from './input'
+export * from './atoms/button'
+export * from './atoms/input'
+export * from './atoms/text'
 export * from './layout'
-export * from './text'
